@@ -8,26 +8,47 @@ _Each prompt is a reusable step. Chain them: the output of one becomes the input
 
 ## Prompt chain: [name your flow]
 
-### Step 1: [purpose]
+### Step 1: Expand, build new screens in a strict sequence
 ```
-[prompt text, with {{variables}} for the parts you swap]
-```
-**Expects in:** _____
-**Produces out:** _____
+I'm building on the existing Retention Engine prototype. Match the attached screenshots exactly: dark utility rail, compact top bar, tabbed workspace, Manrope font, and the existing teal/coral tokens in src/styles.css. Do not add new colors or fonts.
 
-### Step 2: [purpose]
-```
-[prompt text]
-```
-**Expects in:** _____
-**Produces out:** _____
+Right now each step in the Guided Path is only a card with a "Complete and continue" button. Replace that with real screens, built in this order:
 
-### Step 3: [purpose]
+1. Import: a screen showing the 24 sample accounts loading in as a table, with a count and a "Continue" button.
+2. At-risk picker: a list of accounts with usage signals. The user selects one (default Northstar Labs), and the selection carries forward.
+3. Invite teammate: an email field, a role dropdown, and a "Send invite" button. Show the invited teammate in a small list after sending.
+4. Launch playbook (the aha action): a playbook picker with 2 to 3 options, a preview of what it will do, and a "Launch playbook" button.
+5. Activated: a confirmation screen showing Northstar Labs is now Activated, with a link to the Readout tab.
+
+Work through each screen in order. After each one, confirm the progress bar and checklist update before building the next. Keep everything in prototype state only.
 ```
-[prompt text]
+
+### Step 2: Behavior, hard-code the states
 ```
-**Expects in:** _____
-**Produces out:** _____
+Add loading, error, and empty states to the Guided Path and Readout. Use the exact copy below. Do not rewrite it or add extra text.
+
+Guided Path, loading (about 1.5 seconds after clicking "Complete and continue" on Import and Launch playbook):
+- Import: "Importing 24 accounts..."
+- Launch: "Launching playbook for Northstar Labs..."
+
+Guided Path, error (add a small "Simulate error" toggle so I can preview it):
+- Import: "We couldn't import your accounts. Check your connection and try again." Button: "Retry import"
+- Launch: "The playbook didn't launch. Your progress is saved." Button: "Retry launch"
+
+Readout, loading: "Loading cohort results..."
+Readout, empty: "No results yet. Data appears once the cohort has been live for 24 hours."
+
+Use the same segmented-toggle pattern the Overview cohort table already uses for Data / Loading / Empty / Error. Errors should use the existing destructive token. Don't change any other screen.
+```
+
+### Step 3: Refine, one surgical polish
+```
+First, review the outcome switch on the Readout tab (currently "Live Data / Positive Lift / No Lift") and list what is unclear or hard to notice about it. Keep that list to 3 items or fewer.
+
+Then make one change. Rename the options to "Still measuring", "Hypothesis worked", and "Hypothesis failed". Add a short caption above the switch: "Preview an outcome". Make the selected state stronger using existing tokens. The kill-switch panel should still appear when "Hypothesis failed" is selected.
+
+Don't change anything else.
+```
 
 ## Reusable techniques learned
 
