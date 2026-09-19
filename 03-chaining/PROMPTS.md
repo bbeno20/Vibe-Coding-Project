@@ -52,11 +52,16 @@ Don't change anything else.
 
 ## Reusable techniques learned
 
-- _____
-- _____
+- Attach screenshots so new screens match the existing design
+- Build screens in a fixed order so each one anchors the next
+- Write exact copy for every loading, empty, and error state
+- Add a toggle to preview unhappy paths that can't happen on their own
+- Have the AI list problems first, then make one targeted change
+- End with "Don't change anything else" to limit what the AI touches
 
 ## What broke (and the fix)
 
 _Where a single mega-prompt failed and chaining fixed it._
 
-_____
+Problem: Expand removed the "AHA ACTION" badge from step 4, which I didn't ask it to change. Fix: [what you do about it].
+Problem: The 24 sample accounts reuse the same names with numbers added, so the table looks fake. Fix: [what you do about it].
